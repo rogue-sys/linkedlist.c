@@ -89,3 +89,67 @@ void insert()
     
 
 }
+
+void delete()
+{
+    int i,j;
+    if(head->link==NULL)
+    printf("\n!!--EMPTY LIST--!!\n");
+    else
+    {
+        printf("\nDELETE\n1. First Element\n2. Last Element\n3. Particular Element\nEnter The Value: ");
+        scanf("%d",&i);
+        ptr=head->link;
+        if(i==1)
+        {
+            ptr=ptr->link;
+            head->link=ptr;
+            printf("\n---Element Deleted---\n");
+        }
+        else if(i==2)
+        {
+            while(ptr->link!=NULL)
+            {
+                temp=ptr;
+                ptr=ptr->link;
+            }
+            temp->link=NULL;
+            printf("\n---Element Deleted---\n");
+        }
+        else if(i==3)
+        {
+            show();
+            ptr=head->link;
+            printf("Enter The Element: ");
+            scanf("%d",&j);
+            while(ptr->data!=j&&ptr->link!=NULL)
+            {
+                temp=ptr;
+                ptr=ptr->link;
+            }
+            if(ptr->data==j)
+            {
+                temp->link=ptr->link;
+                printf("\n---Element Deleted---\n");
+            }
+            else
+            printf("\n---Element Not Found---\n");
+        }
+    }
+}
+void show()
+{
+    if(head->link!=NULL)
+    {
+        ptr=head;
+        printf("Your List Items Are: ");
+        while(ptr->link!=NULL)
+        {
+            ptr=ptr->link;
+            printf("   %d",ptr->data);
+        }
+        printf("\n");
+    }
+    else
+    printf("!!--LIST EMPTY--!!\n");
+}
