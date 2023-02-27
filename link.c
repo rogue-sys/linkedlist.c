@@ -33,3 +33,59 @@ void main()
         }
     }
 }
+
+void insert()
+{
+    int i,j;
+    printf("1.insertback\n2.insertbeg\n3.insert anywhere\nselect one option:" );
+    scanf("%d",&j);
+    printf("Enter The Element: ");
+    scanf("%d",&i);
+    
+    if(j==2)
+    {
+        temp=(struct node *)malloc(sizeof(struct node));
+         if(temp==NULL)
+         printf("memory underflow,no insertion");
+        else
+        {
+            temp->data=i;
+            temp->link=head->link;
+            head->link=temp;
+        }
+    }
+
+    else if(j==1)
+    {
+    temp=(struct node*)malloc(sizeof(struct node));
+    temp->data=i;
+    temp->link=NULL;
+    ptr=head;
+    while(ptr->link!=NULL)
+    ptr=ptr->link;
+    ptr->link=temp;
+    }
+
+    else if(j==3)
+    {
+     int key;
+     temp=(struct node *)malloc(sizeof(struct node));
+     show();
+     printf("enter the key value:");
+     scanf("%d",&key);
+     temp->data=i;
+     ptr=head;
+     while(ptr->data!=key && ptr->link!=NULL)
+     ptr=ptr->link;
+     if(ptr->link==NULL)
+     printf("SEARCH FAILS");
+     else
+     {
+        temp->link=ptr->link;
+        ptr->link=temp;
+     }
+     
+    }
+    
+
+}
